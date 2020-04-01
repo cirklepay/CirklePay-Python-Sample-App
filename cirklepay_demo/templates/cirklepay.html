@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% block extracss %}
+  
+{% endblock extracss %}
+
+
+{% block maincontent %}
+<hr>
+<div class="row">
+</div>
+<div class="row">
+    <div class="col-md-6">
+        <div class="row bs-example">
+            <form action="{% url 'cirklepay_checkout' %}" method="post" name="cirklepayForm">
+                {% csrf_token %}
+            <table>
+                <tr>
+                    <td><b>Mandatory Parameters</b></td>
+                </tr>
+                <tr>
+                    <td>Amount: </td>
+                    <td><input name="amount" value="{{ posted.amount|default:'' }}" /></td>
+                    <td>First Name: </td>
+                    <td><input name="firstname" id="firstname" value="{{ posted.firstname|default:'' }}" /></td>
+                </tr>
+                <tr>
+                    <td>Email: </td>
+                    <td><input name="email" id="email" value="{{ posted.email|default:'' }}" /></td>
+                    <td>Phone: </td>
+                    <td><input name="phone" value="{{ posted.phone|default:'' }}" /></td>
+                </tr>
+                <tr>
+                    <td>Product Info: </td>
+                    <td colspan="3"><textarea name="productinfo">{{ posted.productinfo|default:'' }}</textarea></td>
+                </tr>
+                              
+                <td colspan="4">
+                    <input style="
+                    margin-top: 12px;
+                    margin-left: 36%;" type="submit" class="btn btn-primary btn-lg" value="SUBMIT">
+                </td>
+                </tr>
+            </table>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock maincontent %}
+
+
+
+{% block extrajs %}
+    
+{% endblock extrajs %}
+    
